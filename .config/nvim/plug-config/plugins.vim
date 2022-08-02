@@ -30,7 +30,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
     nmap <Leader>lv <Plug>MarkdownPreview
     nmap <M-s> <Plug>MarkdownPreviewStop
     nmap <C-p> <Plug>MarkdownPreviewToggle
-Better Syntax Support
+" Better Syntax Support
 Plug 'sheerun/vim-polyglot'
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
