@@ -2,32 +2,12 @@
 
 call plug#begin(stdpath('config') . '/plugged')
 Plug 'lervag/vimtex'
-    let g:tex_flavor = 'latex'
-    let g:vimtex_view_method='zathura'
-    let g:vimtex_quickfix_mode=0
-    let g:vimtex_compiler_progname = 'latexmk'
-    let g:vimtex_compiler_engine = 'pdflatex'
-    function! ZathuraHook() dict abort
-        if self.xwin_id <= 0 | return | endif
-
-        silent call system('xdotool windowactivate ' . self.xwin_id . ' --sync')
-        silent call system('xdotool windowraise ' . self.xwin_id)
-    endfunction
-    augroup vimrc_vimtex
-        autocmd!
-        autocmd User VimtexEventView call ZathuraHook()
-    augroup END
-    set conceallevel=1
-    let g:tex_conceal='abdmg'
     let maplocalleader = ","
     "Plug 'KeitaNakamura/tex-conceal.vim'
 "    set conceallevel=1
 "    let g:tex_conceal='abdmg'
 "    hi Conceal ctermbg=none
 Plug 'sirver/ultisnips'
-    let g:UltiSnipsExpandTrigger = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger = '<tab>'
-    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " I decided I might actually be okay with markdown for some quick non math
 " intensive programming
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -50,7 +30,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
     nmap <Leader>lv <Plug>MarkdownPreview
     nmap <M-s> <Plug>MarkdownPreviewStop
     nmap <C-p> <Plug>MarkdownPreviewToggle
-" Better Syntax Support
+Better Syntax Support
 Plug 'sheerun/vim-polyglot'
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
@@ -90,3 +70,26 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 call plug#end() 
 
+" short configs - vimtex
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:vimtex_compiler_progname = 'latexmk'
+let g:vimtex_compiler_engine = 'pdflatex'
+" auto show PDF
+function! ZathuraHook() dict abort
+    if self.xwin_id <= 0 | return | endif
+    silent call system('xdotool windowactivate ' . self.xwin_id . ' --sync')
+    silent call system('xdotool windowraise ' . self.xwin_id)
+endfunction
+augroup vimrc_vimtex
+    autocmd!
+    autocmd User VimtexEventView call ZathuraHook()
+augroup END
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" ultisnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
