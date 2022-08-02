@@ -75,7 +75,7 @@ let g:tex_flavor = 'latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:vimtex_compiler_progname = 'latexmk'
-let g:vimtex_compiler_engine = 'pdflatex'
+let g:vimtex_compiler_engine = 'lualatex'
 " auto show PDF
 function! ZathuraHook() dict abort
     if self.xwin_id <= 0 | return | endif
