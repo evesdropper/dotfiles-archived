@@ -1,3 +1,22 @@
+## additional folders
+discord/
+dconf/
+enchant/
+evolution/
+gedit/
+gnome*/
+goa-1.0/
+gtk-3.0/
+ibus/
+nautilus/
+pulse/
+update-notifier/
+
+## additional files
+user-dirs.*
+mimeapps.list
+gnome-initial-setup-done
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
