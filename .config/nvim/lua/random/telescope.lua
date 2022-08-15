@@ -3,6 +3,7 @@ if not status_ok then
   return
 end
 
+vim.g.localleader = ","
 local actions = require "telescope.actions"
 telescope.load_extension "media_files"
 local icons = require "random.icons"

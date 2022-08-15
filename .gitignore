@@ -7,7 +7,7 @@ Downloads/
 Documents/
 .fzf/
 .gnupg/
-libexpoxy/
+libepoxy/
 .local/
 Music/
 .npm/
@@ -28,7 +28,7 @@ Videos/
 *.appimage
 .python_history
 .sudo_as_admin_successful
-.wget_hists
+.wget_hsts
 
 ## additional folders
 build/

@@ -9,8 +9,11 @@ echo "source /etc/profile.d/bash_completion.sh" >> ~/.bashrc
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# golang 
+# path modifications
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
+export PATH=$PATH:/usr/local/bin/meson
+export PATH=$PATH:/usr/local/bin/ninja
 
 # common places to go 
 alias home='cd ~'
@@ -30,6 +33,9 @@ alias gsh='git stash'
 alias gl="git log"
 alias gp="git push"
 alias gpl="git pull"
+
+# tlmgr
+alias tlm="sudo env PATH='$PATH' tlmgr"
 
 # rc moment
 alias bashrc="nvim ~/.bashrc"
@@ -160,6 +166,22 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
