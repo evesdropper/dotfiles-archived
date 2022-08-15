@@ -74,16 +74,18 @@ return packer.startup(function(use)
     use "nvim-telescope/telescope-media-files.nvim"
     use "nvim-treesitter/nvim-treesitter"
 
+    -- comments
+    use "numToStr/Comment.nvim" -- Easily comment stuff
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
+
     -- appearance
     use 'Mofiqul/vscode.nvim' -- code dark scheme
     use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-    use {
-    'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-    }
+    -- use "akinsho/bufferline.nvim"
+    use "romgrk/barbar.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

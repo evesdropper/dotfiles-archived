@@ -16,6 +16,7 @@ update-notifier/
 user-dirs.*
 mimeapps.list
 gnome-initial-setup-done
+.gsd-keyboard.settings-ported
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
