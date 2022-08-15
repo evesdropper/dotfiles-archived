@@ -2,8 +2,8 @@
 # See man `man zathurarc'
 
 # window width-height
-set window-width 635
-set window-height 768 
+set window-width 930
+set window-height 1050 
 
 # mappings
 map r reload

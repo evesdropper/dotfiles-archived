@@ -1,4 +1,37 @@
+## folders that people should not be seeing
+build/
+.cache/
+.cargo/
+Desktop/
+Downloads/
+Documents/
+.fzf/
+.gnupg/
+libexpoxy/
+.local/
+Music/
+.npm/
+.nvm/
+Pictures/
+.pki/
+Public/
+.rustup/
+snap/
+.ssh/
+Templates/
+Videos/
+
+# files
+.bash_history
+.bash_logout
+.fzf.bash
+*.appimage
+.python_history
+.sudo_as_admin_successful
+.wget_hists
+
 ## additional folders
+build/
 discord/
 dconf/
 enchant/
