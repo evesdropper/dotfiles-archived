@@ -1,3 +1,24 @@
+
+## additional folders
+discord/
+dconf/
+enchant/
+evolution/
+gedit/
+gnome*/
+goa-1.0/
+gtk-3.0/
+ibus/
+nautilus/
+pulse/
+update-notifier/
+
+## additional files
+user-dirs.*
+mimeapps.list
+gnome-initial-setup-done
+.gsd-keyboard.settings-ported
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -274,6 +295,6 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
-
 # Custom
 *.appimage
+
