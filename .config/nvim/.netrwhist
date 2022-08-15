@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/revise/.config/nvim/plugged/telescope.nvim/lua/telescope'
+let g:netrw_dirhist_3='/home/revise/.config/nvim/plugged/telescope.nvim/lua'
+let g:netrw_dirhist_2='/home/revise/.config/nvim/plug-config'
+let g:netrw_dirhist_1='/home/revise/.config/nvim/plugged/telescope.nvim'

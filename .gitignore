@@ -1,3 +1,13 @@
+# windows (addl folders)
+.cache/
+.dbus/
+.gem/
+.local/
+.npm/
+.ssh/
+.texlive2019/
+.vim/
+
 ## additional folders
 discord/
 dconf/
@@ -294,3 +304,6 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+# Custom
+*.appimage
+
