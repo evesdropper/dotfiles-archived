@@ -9,4 +9,6 @@ return {
       { delimiters = "<>" }
       )
 )
+}, {
+    s("alpha", t("\\alpha"))
 }
