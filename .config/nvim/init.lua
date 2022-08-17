@@ -12,5 +12,10 @@ require "random.lsp"
 require "random.treesitter"
 require "random.autopairs"
 require "random.comments"
-require "random.snippets"
+ls = require "luasnip"
+ls.config.set_config({
+	history = true, --keep around last snippet local to jump back
+    enable_autosnippets = true,})
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/luasnip/"})
+--[[ require "random.snippets" ]]
 -- require "random.bufferline"

@@ -20,3 +20,20 @@ local extras = require("luasnip.extras")
 local m = require("luasnip.extras").m
 local l = require("luasnip.extras").l
 local postfix = require("luasnip.extras.postfix").postfix
+
+-- creating snippets pls send help
+
+ls.add_snippets("tex", {
+    s("trigger", {
+	t({"After expanding, the cursor is here ->"}), i(1),
+	t({"", "After jumping forward once, cursor is here ->"}), i(1),
+	t({"", "After jumping once more, the snippet is exited there ->"}), i(0),
+    }),
+    s("trig", {
+ 	i(1),
+ 	f(function(args, snip, user_arg_1) return args[1][1] .. user_arg_1 end,
+ 		{1},
+ 		{ user_args = {"Will be appended to text from i(0)"}}),
+ 	i(0)
+ })
+})
