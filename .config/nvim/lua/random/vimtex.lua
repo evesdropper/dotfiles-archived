@@ -28,3 +28,5 @@ augroup vimrc_vimtex
     autocmd User VimtexEventView call ZathuraHook()
 augroup END
 ]])
+
+
