@@ -14,6 +14,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
 export PATH=$PATH:/usr/local/bin/meson
 export PATH=$PATH:/usr/local/bin/ninja
+export PATH=$PATH:/usr/bin/zathura
 
 # common places to go 
 alias home='cd ~'
@@ -41,10 +42,11 @@ alias tlm="sudo env PATH='$PATH' tlmgr"
 alias bashrc="nvim ~/.bashrc"
 alias zathurarc="nvim ~/.config/zathura/zathurarc"
 alias vimdir="cd ~/.config/nvim/"
+alias luasnip="cd ~/.config/nvim/luasnip/"
 alias vimrc="nvim ~/.config/nvim/init.lua"
 alias latexmkrc="nvim ~/.latexmkrc"
 alias spellrc="nvim ~/.config/nvim/spell/en.utf-8.add"
-alias preamble=""
+alias preamble="nbim ~/texmf/tex/latex/styles/random.sty"
 
 # If not running interactively, don't do anything
 case $- in
@@ -166,6 +168,33 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh

@@ -7,6 +7,7 @@ Downloads/
 Documents/
 .fzf/
 .gnupg/
+go/
 libepoxy/
 .local/
 Music/
@@ -19,6 +20,7 @@ Public/
 snap/
 .ssh/
 Templates/
+.texlive2022/
 Videos/
 
 # files
@@ -28,10 +30,12 @@ Videos/
 *.appimage
 .python_history
 .sudo_as_admin_successful
-.wget_hsts
+.wget-hsts
+.lesshst
 
 ## additional folders
 build/
+Code/
 discord/
 dconf/
 enchant/
