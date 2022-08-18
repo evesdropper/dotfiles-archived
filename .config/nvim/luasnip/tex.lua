@@ -10,6 +10,51 @@ end
 --[[ end ]]
 
 return {
+    -- templates
+    s({ trig='texdoc', name='new tex doc', dscr='Create a general new tex document'},
+    fmt([[ 
+    \documentclass{article}
+    \usepackage{iftex}
+    \ifluatex
+    \directlua0{
+    pdf.setinfo (
+        table.concat (
+        {
+           "/Title (<>)",
+           "/Author (Evelyn Koo)",
+           "/Subject (<>)",
+           "/Keywords (<>)"
+        }, " "
+        )
+    )
+    }
+    \fi
+    \usepackage{graphicx}
+    \graphicspath{{figures/}}
+    \usepackage[lecture]{random}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{\textsc{Evelyn Koo}}
+    \chead{\textsc{<>}}
+    \lhead{<>}
+    \cfoot{\thepage}
+
+    \begin{document}
+    \title{<>}
+    \author{Evelyn Koo}
+    \date{<>}
+    \maketitle
+    \tableofcontents
+    \section*{<>}
+    \addcontentsline{toc}{section}{<>}
+    <>
+    \subsection*{Remarks}
+    <>
+    \end{document}
+    ]],
+    { i(3), i(2), i(7), i(1), rep(2), rep(3), i(4), i(5), rep(5), i(6), i(0) },
+    { delimiters='<>' }
+    )),
     -- semantic snippets from markdown
     -- sections
     s({trig="#", hidden=true},
@@ -116,6 +161,26 @@ return {
     { i(1), i(0) },
     { delimiters='<>' }
     )),
+    s({ trig='it', name='italic', dscr='italic text', hidden=true},
+    fmt([[\textit{<>}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='tu', name='underline', dscr='underline text', hidden=true},
+    fmt([[\underline{<>}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='sc', name='small caps', dscr='small caps text', hidden=true},
+    fmt([[\textsc{<>}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='tov', name='overline', dscr='overline text'},
+    fmt([[\overline{<>}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
     -- environments
     s({trig="beg", name="begin env", dscr="begin/end environment"},
     fmt([[
@@ -125,12 +190,75 @@ return {
     { i(1), i(0), rep(1) },
     { delimiters="<>" }
     )),
+    s({ trig='-i', name='itemize', dscr='bullet points (itemize)'},
+    fmt([[ 
+    \begin{itemize}
+    \item <>
+    \end{itemize}]],
+    { i(1) },
+    { delimiters='<>' }
+    )),
+    s({ trig='-e', name='enumerate', dscr='numbered list (enumerate)'},
+    fmt([[ 
+    \begin{enumerate}
+    \item <>
+    \end{enumerate}]],
+    { i(1) },
+    { delimiters='<>' }
+    )),
 }, {
+    -- math mode
+    s({ trig='mk', name='math', dscr='inline math'},
+    fmt([[$<>$<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='dm', name='math', dscr='display math'},
+    fmt([[ 
+    \[ 
+    <>
+    .\]
+    <>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='ali', name='align', dscr='align math'},
+    fmt([[ 
+    \begin{align<>}
+    <>
+    .\end{align<>}
+    <>]],
+    { i(1, "*"), i(2), rep(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='gat', name='gather', dscr='gather math'},
+    fmt([[ 
+    \begin{gather<>}
+    <>
+    .\end{gather<>}
+    <>]],
+    { i(1, "*"), i(2), rep(1), i(0) },
+    { delimiters='<>' }
+    )),
+    -- etc 
+    s({ trig='bnc', name='binomial', dscr='binomial (nCR)'},
+    fmt([[\binom{<>}{<>}<>]],
+    { i(1), i(2), i(0) },
+    { delimiters='<>' }
+    )),
     -- a living nightmare worth of greek symbols
     s("alpha", {t("\\alpha")},
     {condition = math}),
     s('beta', {t('\\beta')},
     { condition=math }),
     s('delta', {t('\\delta')},
+    { condition=math }),
+    s('gam', {t('\\gamma')},
+    { condition=math }),
+    s('eps', {t('\\epsilon')},
+    { condition=math }),
+    s('lmbd', {t('\\lambda')},
+    { condition=math }),
+    s('mu', {t('\\mu')},
     { condition=math }),
 }
