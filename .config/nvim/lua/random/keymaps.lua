@@ -39,7 +39,7 @@ keymap("n", "K", ":m .-2<CR>==", opts)
 keymap("n", "J", ":m .+1<CR>==", opts)
 
 -- misc
-keymap("n", "zz", ":w", opts) -- save
+keymap("n", "zz", ":w<CR>", opts) -- save
 
 -- Insert --
 -- Press jk fast to enter
