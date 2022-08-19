@@ -22,6 +22,7 @@ alias root='cd /'
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
 alias ....='cd ..; cd ..; cd ..'
+alias docs='cd ~/Documents/'
 
 # git commands
 alias g='git'
@@ -46,7 +47,7 @@ alias luasnip="cd ~/.config/nvim/luasnip/"
 alias vimrc="nvim ~/.config/nvim/init.lua"
 alias latexmkrc="nvim ~/.latexmkrc"
 alias spellrc="nvim ~/.config/nvim/spell/en.utf-8.add"
-alias preamble="nbim ~/texmf/tex/latex/styles/random.sty"
+alias preamble="nvim ~/texmf/tex/latex/styles/random.sty"
 
 # If not running interactively, don't do anything
 case $- in
@@ -168,6 +169,18 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
+source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh
 source /etc/profile.d/bash_completion.sh

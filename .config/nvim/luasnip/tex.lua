@@ -99,8 +99,30 @@ return {
     { i(1), i(0) },
     { delimiters='<>' }
     )),
+    -- special sections 
+    s({ trig='#l', name='lecture', dscr='fancy section header - lecture #'},
+    fmt([[ 
+    \lecture[<>]{<>}
+    <>]],
+    { t(os.date("%d-%m-%y")), i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='#ch', name='chap', dscr='fancy section header - chapter #'},
+    fmt([[ 
+    \bookchap[<>]{<>}{<>}
+    <>]],
+    { t(os.date("%d-%m-%y")), i(1, "dscr"), i(2, "\\thesection"), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='#f', name='fancy section', dscr='fancy section header - vanilla'},
+    fmt([[ 
+    \fancysec[<>}{<>}{<>}
+    <>]],
+    { t(os.date('%d-%m-%y')), i(1, "dscr"), i(2, "title"), i(0) },
+    { delimiters='<>' }
+    )),
     -- links images figures
-    s({trig="!l", name="link", dscr="Link reference"},
+    s({trig="!l", name="link", dscr="Link reference", hidden=true},
     fmt([[\href{<>}{\color{<>}<>}<>]],
     { i(1, "link"), i(3, "blue"), i(2, "title"), i(0) },
     { delimiters='<>' }
