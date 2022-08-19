@@ -3,11 +3,11 @@ local function math()
     return vim.api.nvim_eval('vimtex#syntax#in_mathzone()') == 1
 end
 
---[[ local function env(name) ]]
---[[     t = {x, y} ]]
---[[     local t = vim.api.nvim_eval("vimtex#env#is_inside('" + name "')") ]]
---[[     return x ~= 0 and y ~= 0 ]]
---[[ end ]]
+local function env(name)
+    t = {x, y}
+    local t = vim.api.nvim_eval("vimtex#env#is_inside('" + name "')")
+    return x ~= 0 and y ~= 0
+end
 
 return {
     -- templates
@@ -228,6 +228,49 @@ return {
     { i(1) },
     { delimiters='<>' }
     )),
+    -- item but i cant get this to work
+    --[[ s({trig="-", hidden=true}, {t('\\item')},]]
+    --[[ { condition=(env("enumerate") or env("itemize")) }), ]]
+    s({ trig='adef', name='add definition', dscr='add definition box'},
+    fmt([[ 
+    \begin{definition}[<>]{<>
+    }
+    \end{definition}]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='aex', name='add example', dscr='add example box'},
+    fmt([[ 
+    \begin{example}[<>]{<>
+    }
+    \end{example}]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='athm', name='add theorem', dscr='add theorem box'},
+    fmt([[ 
+    \begin{theorem}[<>]{<>
+    }
+    \end{theorem}]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='nb', name='notebox', dscr='add notebox idk why this format is diff'},
+    fmt([[ 
+    \begin{notebox}[<>]
+    <>
+    \end{notebox}]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='sol', name='solution', dscr='solution box for homework'},
+    fmt([[ 
+    \begin{solution}
+    <>
+    \end{solution}]],
+    { i(0) },
+    { delimiters='<>' }
+    )),
 }, {
     -- math mode
     s({ trig='mk', name='math', dscr='inline math'},
@@ -269,6 +312,7 @@ return {
     { delimiters='<>' }
     )),
     -- a living nightmare worth of greek symbols
+    -- TODO: replace with regex
     s("alpha", {t("\\alpha")},
     {condition = math}),
     s('beta', {t('\\beta')},
