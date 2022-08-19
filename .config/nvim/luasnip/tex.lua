@@ -3,11 +3,11 @@ local function math()
     return vim.api.nvim_eval('vimtex#syntax#in_mathzone()') == 1
 end
 
-local function env(name)
-    t = {x, y}
-    local t = vim.api.nvim_eval("vimtex#env#is_inside('" + name "')")
-    return x ~= 0 and y ~= 0
-end
+--[[ local function env(name) ]]
+--[[     t = {x, y} ]]
+--[[     local t = vim.api.nvim_eval("vimtex#env#is_inside('" + name "')") ]]
+--[[     return x ~= 0 and y ~= 0 ]]
+--[[ end ]]
 
 return {
     -- templates
@@ -305,6 +305,29 @@ return {
     { i(1, "*"), i(2), rep(1), i(0) },
     { delimiters='<>' }
     )),
+    -- operators, symbols
+    s({trig='**', priority=100}, {t('\\cdot')},
+    { condition=math }),
+    s('xx', {t('\\times')},
+    { condition=math }),
+    s({ trig='//', name='fraction', dscr='fraction (autoexpand)'},
+    fmt([[\\frac{<>}{<>}<>]],
+    { i(1), i(2), i(0) },
+    { delimiters='<>' },
+    { condition=math })),
+    s('==', {t('&='), i(1), t("\\\\")},
+    { condition=math }),
+    s('!=', {t('\neq')},
+    { condition=math }),
+    s({ trig='conj', name='conjugate', dscr='conjugate would have been useful in eecs 126'},
+    fmt([[\overline{<>}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' },
+    { condition=math })),
+    s('<=', {t('\\leq')},
+    { condition=math }),
+    s('>=', {t('\\geq')},
+    { condition=math }),
     -- etc 
     s({ trig='bnc', name='binomial', dscr='binomial (nCR)'},
     fmt([[\binom{<>}{<>}<>]],

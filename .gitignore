@@ -8,6 +8,10 @@ Documents/
 .fzf/
 .gnupg/
 go/
+.gnome/
+swhkd/
+google-chrome/
+menus/
 libepoxy/
 .local/
 Music/
