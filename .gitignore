@@ -1,4 +1,6 @@
 ## folders that people should not be seeing
+autostart/
+.shutter/
 build/
 .cache/
 .cargo/

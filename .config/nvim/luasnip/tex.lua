@@ -1,6 +1,8 @@
 -- LaTeX Snippets
 -- TODO: set options for matrix and table snippets (either auto generate or user input)
 -- TODO: fix env function; make it for tikz
+local postfix = require("luasnip.extras.postfix").postfix
+
 
 -- env stuff
 local function math()
@@ -468,6 +470,10 @@ return {
     { i(1), i(0) },
     { delimiters='<>' }
     ), { condition=math }),
+    -- hats and bars (postfixes) 
+    postfix("bar", {l("\\bar{" .. l.POSTFIX_MATCH .. "}")}),
+    postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}),
+    postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}),
     -- etc
     s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
     fmt([[\<>dots]],

@@ -41,6 +41,8 @@ local options = {
   title = true,
   -- colorcolumn = "80",
   -- colorcolumn = "120",
+  spell = true,
+  spellang = en_us,
 
 }
 -- vim.g.loaded_netrw = 1
