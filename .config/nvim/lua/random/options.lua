@@ -1,4 +1,5 @@
 vim.g.maplocalleader = ","
+vim.g.python3_host_prog = '/usr/bin/python3.10'
 
 local options = {
   backup = false,                          -- creates a backup file

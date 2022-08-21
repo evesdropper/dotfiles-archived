@@ -4,6 +4,11 @@ if not status_ok then
   return
 end
 
+local Rule = require('nvim-autopairs.rule')
+local npairs = require('nvim-autopairs')
+local cond = require('nvim-autopairs.conds')
+
+
 npairs.setup {
   check_ts = true,
   ts_config = {
@@ -30,3 +35,9 @@ local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
   return
 end
+
+npairs.add_rules({
+  Rule("$", "$",{"tex", "latex"})
+    -- don't add a pair if the next character is %
+    :with_pair(cond.not_before_regex("\\"))
+})

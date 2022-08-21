@@ -4,9 +4,16 @@ local function math()
 end
 
 --[[ local function env(name) ]]
---[[     t = {x, y} ]]
---[[     local t = vim.api.nvim_eval("vimtex#env#is_inside('" + name "')") ]]
---[[     return x ~= 0 and y ~= 0 ]]
+--[[     t = vim.api.nvim.eval("vimtex#env#is_inside('" + name + "')") ]]
+--[[     return 0 ]]
+--[[ end ]]
+--[[]]
+--[[ local function itemize() ]]
+--[[     return env("itemize") ]]
+--[[ end ]]
+--[[]]
+--[[ local function enumerate() ]]
+--[[     return env("enumerate") ]]
 --[[ end ]]
 
 return {
@@ -166,6 +173,14 @@ return {
     { i(1, "python"), i(2), i(0) },
     { delimiters='<>' }
     )),
+    s({ trig='mp', name='minipage', dscr='create minipage env'}, -- choice node
+    fmt([[
+    \begin{minipage}{<>\textwidth}
+    <>
+    \end{minipage}]],
+    { c(1, {t("0.5"), t("0.33"), i(nil)}), i(0) },
+    { delimiters='<>' }
+    )),
     -- quotes
     s({ trig='sq', name='single quotes', dscr='single quotes', hidden=true},
     fmt([[`<>'<>]],
@@ -229,8 +244,8 @@ return {
     { delimiters='<>' }
     )),
     -- item but i cant get this to work
-    --[[ s({trig="-", hidden=true}, {t('\\item')},]]
-    --[[ { condition=(env("enumerate") or env("itemize")) }), ]]
+    --[[ s({trig="-", hidden=true}, {t('\\item')}, ]]
+    --[[ { condition=enumerate or itemize }), ]]
     s({ trig='adef', name='add definition', dscr='add definition box'},
     fmt([[ 
     \begin{definition}[<>]{<>
@@ -311,13 +326,13 @@ return {
     s('xx', {t('\\times')},
     { condition=math }),
     s({ trig='//', name='fraction', dscr='fraction (autoexpand)'},
-    fmt([[\\frac{<>}{<>}<>]],
+    fmt([[\frac{<>}{<>}<>]],
     { i(1), i(2), i(0) },
     { delimiters='<>' },
     { condition=math })),
     s('==', {t('&='), i(1), t("\\\\")},
     { condition=math }),
-    s('!=', {t('\neq')},
+    s('!=', {t('\\neq')},
     { condition=math }),
     s({ trig='conj', name='conjugate', dscr='conjugate would have been useful in eecs 126'},
     fmt([[\overline{<>}<>]],
@@ -328,7 +343,20 @@ return {
     { condition=math }),
     s('>=', {t('\\geq')},
     { condition=math }),
-    -- etc 
+    s('>>', {t('\\gg')},
+    { condition=math }),
+    s('<<', {t('\\ll')},
+    { condition=math }),
+    s('~~', {t('\\sim')},
+    { condition=math }),
+    -- etc
+    s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
+    fmt([[\<>dots]],
+    { f(function(_, snip) 
+      return snip.captures[1]
+      end)},
+    { delimiters='<>' },
+    { condition=math })),
     s({ trig='bnc', name='binomial', dscr='binomial (nCR)'},
     fmt([[\binom{<>}{<>}<>]],
     { i(1), i(2), i(0) },

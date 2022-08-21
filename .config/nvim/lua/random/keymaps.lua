@@ -79,4 +79,9 @@ keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 -- keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 -- keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
+keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
+keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
+keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
+keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+
 return M
