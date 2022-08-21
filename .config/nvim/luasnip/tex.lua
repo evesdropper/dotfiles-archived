@@ -46,6 +46,27 @@ local tab = function(args, snip)
 	return sn(nil, nodes)
 end
 
+-- yes this is a ripoff
+local mat = function(args, snip)
+	local rows = tonumber(snip.captures[2])
+    local cols = tonumber(snip.captures[3])
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		table.insert(nodes, r(ins_indx, tostring(j).."x1", i(1)))
+		ins_indx = ins_indx+1
+		for k = 2, cols do
+			table.insert(nodes, t" & ")
+			table.insert(nodes, r(ins_indx, tostring(j).."x"..tostring(k), i(1)))
+			ins_indx = ins_indx+1
+		end
+		table.insert(nodes, t{"\\\\", ""})
+	end
+	-- fix last node.
+	nodes[#nodes] = t""
+	return sn(nil, nodes)
+end
+
 return {
     -- templates
     s({ trig='texdoc', name='new tex doc', dscr='Create a general new tex document'},
@@ -326,6 +347,23 @@ return {
     { f(function(_, snip)
         return string.rep("c", tonumber(snip.captures[2]))
     end), d(1, tab) },
+    { delimiters='<>' }
+    )),
+    s({ trig='([bBpvV])mat(%d+)x(%d+)([ar])', regTrig=true, name='matrix', dscr='matrix trigger lets go'},
+    fmt([[
+    \begin{<>}<>
+    <>
+    \end{<>}]],
+    { f(function (_, snip) return snip.captures[1] .. "matrix" end),
+    f(function (_, snip)
+        if snip.captures[4] == "a" then
+            out = string.rep("c", tonumber(snip.captures[3]) - 1)
+            return "[" .. out .. "|c]"
+        end
+        return ""
+    end),
+    d(1, mat),
+    f(function (_, snip) return snip.captures[1] .. "matrix" end)},
     { delimiters='<>' }
     ))
 }, {
