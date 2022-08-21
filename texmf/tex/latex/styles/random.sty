@@ -173,7 +173,6 @@
 \definecolor{lststringcolor}{RGB}{93, 147, 92}  % HSL(119, 23%, 47%); green
 \definecolor{lstkeywordcolor}{RGB}{166, 38, 164}  % HSL(301, 63%, 40%); purple
 \definecolor{lstlinenumbercolor}{RGB}{157, 157, 159}  % HSL(230, 1%, 62%)
-
 \lstset{%
     columns=fullflexible,
     numbers=left,
@@ -189,16 +188,31 @@
     numberstyle=\color{lstlinenumbercolor}\ttfamily,
     captionpos=t,
 }
+\lstdefinelanguage{pseudo}{
+    morekeywords={
+        % Python
+        false, true, and, assert, break, class, continue, def, elif, else, for, if, in, is, not, or, pass, return, while,
+        % Lua
+        end, repeat, do, then, function, until,
+        % Other
+        to,
+    },
+    sensitive=false,
+    morestring=[b]",
+    morestring=[b]',
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/}
+}
 
-\RequirePackage{minted}
+\RequirePackage[outputdir=out]{minted}
     \RequirePackage{fancyvrb}
     \setminted{%
         autogobble,
         breaklines,
         linenos,
         mathescape,
-        fontsize=\footnotesize,
-        bgcolor=lstbgcolor,
+        python3,
+        fontsize=\footnotesize, 
         numbersep=10pt,
         style=atomonelight,  % custom minted style; falls back to default style
         xleftmargin=2em,

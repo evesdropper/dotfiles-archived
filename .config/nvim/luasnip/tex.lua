@@ -1,3 +1,8 @@
+-- LaTeX Snippets
+-- TODO: set options for matrix and table snippets (either auto generate or user input)
+-- TODO: fix env function; make it for tikz
+
+-- env stuff
 local function math()
     -- global p! functions from UltiSnips
     return vim.api.nvim_eval('vimtex#syntax#in_mathzone()') == 1
@@ -8,13 +13,6 @@ end
 --[[     return 0 ]]
 --[[ end ]]
 --[[]]
---[[ local function itemize() ]]
---[[     return env("itemize") ]]
---[[ end ]]
---[[]]
---[[ local function enumerate() ]]
---[[     return env("enumerate") ]]
---[[ end ]]
 
 -- table of greek symbols 
 griss = {
@@ -42,8 +40,8 @@ local tab = function(args, snip)
         end
 	end
 	-- fix last node.
-	nodes[#nodes] = t""
-	return sn(nil, nodes)
+    nodes[#nodes] = t("\\\\")
+    return sn(nil, nodes)
 end
 
 -- yes this is a ripoff
@@ -66,6 +64,21 @@ local mat = function(args, snip)
 	nodes[#nodes] = t""
 	return sn(nil, nodes)
 end
+
+-- TODO: itemize/enumerate
+--[[ rec_ls = function() ]]
+--[[ 	return sn(nil, { ]]
+--[[ 		c(1, { ]]
+--[[ 			-- important!! Having the sn(...) as the first choice will cause infinite recursion. ]]
+--[[ 			t({""}), ]]
+--[[ 			-- The same dynamicNode as in the snippet (also note: self reference). ]]
+--[[ 			sn(nil, {t({"", "\t\\item "}), i(1), d(2, rec_ls, {})}), ]]
+--[[ 		}), ]]
+--[[ 	}); ]]
+--[[ end ]]
+--[[]]
+
+-- snippets go here
 
 return {
     -- templates
@@ -96,7 +109,7 @@ return {
     \chead{\textsc{<>}}
     \lhead{<>}
     \cfoot{\thepage}
-
+
     \begin{document}
     \title{<>}
     \author{Evelyn Koo}
@@ -337,7 +350,7 @@ return {
     { i(0) },
     { delimiters='<>' }
     )),
-    s({ trig='tabtest(%d+)x(%d+)', regTrig=true, name='test for tabular', dscr='test'},
+    s({ trig='tab(%d+)x(%d+)', regTrig=true, name='test for tabular', dscr='test'},
     fmt([[
     \begin{tabular}{@{}<>@{}}
     \toprule
@@ -365,7 +378,7 @@ return {
     d(1, mat),
     f(function (_, snip) return snip.captures[1] .. "matrix" end)},
     { delimiters='<>' }
-    ))
+    )),
 }, {
     -- math mode
     s({ trig='mk', name='math', dscr='inline math'},
