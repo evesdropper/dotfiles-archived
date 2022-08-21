@@ -16,6 +16,36 @@ end
 --[[     return env("enumerate") ]]
 --[[ end ]]
 
+-- table of greek symbols 
+griss = {
+    alpha = "alpha", beta = "beta", delta = "delta", gam = "gamma", eps = "epsilon",
+    mu = "mu", lmbd = "lambda", sig = "sigma"
+}
+
+-- LFG tables and matrices work
+local tab = function(args, snip)
+	local rows = tonumber(snip.captures[1])
+    local cols = tonumber(snip.captures[2])
+	local nodes = {}
+	local ins_indx = 1
+	for j = 1, rows do
+		table.insert(nodes, r(ins_indx, tostring(j).."x1", i(1)))
+		ins_indx = ins_indx+1
+		for k = 2, cols do
+			table.insert(nodes, t" & ")
+			table.insert(nodes, r(ins_indx, tostring(j).."x"..tostring(k), i(1)))
+			ins_indx = ins_indx+1
+		end
+		table.insert(nodes, t{"\\\\", ""})
+        if j == 1 then
+            table.insert(nodes, t{"\\midrule", ""})
+        end
+	end
+	-- fix last node.
+	nodes[#nodes] = t""
+	return sn(nil, nodes)
+end
+
 return {
     -- templates
     s({ trig='texdoc', name='new tex doc', dscr='Create a general new tex document'},
@@ -45,7 +75,7 @@ return {
     \chead{\textsc{<>}}
     \lhead{<>}
     \cfoot{\thepage}
-
+
     \begin{document}
     \title{<>}
     \author{Evelyn Koo}
@@ -286,6 +316,18 @@ return {
     { i(0) },
     { delimiters='<>' }
     )),
+    s({ trig='tabtest(%d+)x(%d+)', regTrig=true, name='test for tabular', dscr='test'},
+    fmt([[
+    \begin{tabular}{@{}<>@{}}
+    \toprule
+    <>
+    \bottomrule
+    \end{tabular}]],
+    { f(function(_, snip)
+        return string.rep("c", tonumber(snip.captures[2]))
+    end), d(1, tab) },
+    { delimiters='<>' }
+    ))
 }, {
     -- math mode
     s({ trig='mk', name='math', dscr='inline math'},
@@ -355,15 +397,23 @@ return {
     { f(function(_, snip) 
       return snip.captures[1]
       end)},
-    { delimiters='<>' },
-    { condition=math })),
+    { delimiters='<>' }),
+    { condition=math }),
     s({ trig='bnc', name='binomial', dscr='binomial (nCR)'},
     fmt([[\binom{<>}{<>}<>]],
     { i(1), i(2), i(0) },
-    { delimiters='<>' }
-    )),
+    { delimiters='<>' }),
+    { condition=math }),
     -- a living nightmare worth of greek symbols
     -- TODO: replace with regex
+    s({ trig='(alpha|beta|delta)', regTrig=true,
+    name='griss symbol', dscr='greek letters hi'},
+    fmt([[\<>]],
+    { f(function(_, snip)
+        return griss[snip.captures[1]]
+    end) },
+    { delimiters='<>' }),
+    { condition=math }),
     s("alpha", {t("\\alpha")},
     {condition = math}),
     s('beta', {t('\\beta')},

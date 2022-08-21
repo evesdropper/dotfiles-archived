@@ -4,8 +4,8 @@ return {
     s({ trig='<>', name='<>', dscr='<>'},
     fmt(<>,
     { <> },
-    { delimiters='<>' }<>
-    ))<>]],
+    { delimiters='<>' }
+    )<>)<>]],
     { i(1, "trig"), i(2, "trig"), i(3, "dscr"), i(4, "fmt"), i(5, "inputs"), i(6, "<>"), i(7), i(0)},
     { delimiters='<>' }
     )),
