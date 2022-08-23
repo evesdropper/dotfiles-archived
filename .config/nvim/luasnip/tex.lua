@@ -11,10 +11,16 @@ local function math()
 end
 
 --[[ local function env(name) ]]
---[[     t = vim.api.nvim.eval("vimtex#env#is_inside('" + name + "')") ]]
+--[[     if vim.api.nvim_eval("vimtex#env#is_inside('tikzpicture')") ~= nil then ]]
+--[[         return 1 ]]
+--[[     end ]]
 --[[     return 0 ]]
 --[[ end ]]
 --[[]]
+--[[ local function tikz() ]]
+--[[     return env("tikzpicture") ]]
+--[[ end ]]
+
 
 -- table of greek symbols 
 griss = {
@@ -471,9 +477,9 @@ return {
     { delimiters='<>' }
     ), { condition=math }),
     -- hats and bars (postfixes) 
-    postfix("bar", {l("\\bar{" .. l.POSTFIX_MATCH .. "}")}),
-    postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}),
-    postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}),
+    postfix("bar", {l("\\bar{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
+    postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
+    postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     -- etc
     s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
     fmt([[\<>dots]],

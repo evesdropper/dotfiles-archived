@@ -12,6 +12,7 @@ require "random.lsp"
 require "random.treesitter"
 require "random.autopairs"
 require "random.comments"
+require "random.presence"
 ls = require "luasnip"
 ls.config.set_config({
 	history = true, --keep around last snippet local to jump back
