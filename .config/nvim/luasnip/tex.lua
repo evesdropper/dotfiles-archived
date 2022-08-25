@@ -387,6 +387,12 @@ return {
     f(function (_, snip) return snip.captures[1] .. "matrix" end)},
     { delimiters='<>' }
     )),
+    -- parentheses
+    s({ trig='lr', name='left right', dscr='left right'},
+    fmt([[\left(<>\right)<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    ), { condition=math }),
 }, {
     -- math mode
     s({ trig='mk', name='math', dscr='inline math'},
@@ -480,6 +486,7 @@ return {
     postfix("bar", {l("\\bar{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
+    postfix("vr", {l("$" .. l.POSTFIX_MATCH .. "$")}),
     -- etc
     s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
     fmt([[\<>dots]],
@@ -516,5 +523,34 @@ return {
     s('lmbd', {t('\\lambda')},
     { condition=math }),
     s('mu', {t('\\mu')},
+    { condition=math }),
+    -- stuff i need for m110
+    s({ trig='set', name='set', dscr='set'},
+    fmt([[\{<>\}<>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    ), { condition=math }),
+    s('cc', {t('\\subset')},
+    { condition=math }),
+    s('ce', {t('\\subseteq')},
+    { condition=math }),
+    -- reals and number sets 
+    s('RR', {t('\\mathbb{R}')},
+    { condition=math }),
+    s('CC', {t('\\mathbb{C}')},
+    { condition=math }),
+    s('ZZ', {t('\\mathbb{Z}')},
+    { condition=math }),
+    s('QQ', {t('\\mathbb{Q}')},
+    { condition=math }),
+    -- quantifiers and cs70 n1 stuff
+    s('AA', {t('\\forall')},
+    { condition=math }),
+    s('EE', {t('\\exists')},
+    { condition=math }),
+    s('inn', {t('\\in')},
+    { condition=math }),
+    -- utils
+    s('||', {t('\\mid')},
     { condition=math }),
 }
