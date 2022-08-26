@@ -469,6 +469,12 @@ return {
     f(function(_, snip) return snip.captures[2] end)},
     { delimiters='<>' }),
     { condition=math }),
+    s('xnn', {t('x_n')},
+    { condition=math }),
+    s('xii', {t('x_i')},
+    { condition=math }),
+    s('xjj', {t('x_j')},
+    { condition=math}),
     s({trig='sr', wordTrig=false}, {t('^2')},
     { condition=math }),
     s({trig='cb', wordTrig=false}, {t('^3')},
@@ -553,4 +559,6 @@ return {
     -- utils
     s('||', {t('\\mid')},
     { condition=math }),
+    s('ctd', {t('%TODO: '), i(1)}
+    ),
 }

@@ -28,6 +28,10 @@ snap/
 Templates/
 .texlive2022/
 Videos/
+.zoom/
+.java/
+.selected_editor
+
 
 # files
 .bash_history
@@ -54,6 +58,13 @@ ibus/
 nautilus/
 pulse/
 update-notifier/
+Microsoft/
+Unknown Organization/
+teams/
+libreoffice/
+flameshot/
+totem/
+zoomus.conf
 
 ## additional files
 user-dirs.*

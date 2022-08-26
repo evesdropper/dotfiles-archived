@@ -593,7 +593,8 @@
     \newtcbtheorem[number within=section, list inside=notelist]{tcbnote}{Note}{%
     colback=violet!5, colbacktitle=violet!20, coltitle=black,
     frame hidden, arc=2pt, titlerule=0pt, toptitle=2pt, bottomtitle=2pt,
-    fonttitle=\bfseries, breakable, enhanced, parbox=false
+    fonttitle=\bfseries, breakable, enhanced, parbox=false,
+    segmentation style={solid, draw=violet!20, line width=1pt}
     }{exer}
     \newenvironmentx{notebox}[2][1={},2={}]{%
         \begin{tcbnote}{#1}{#2}
