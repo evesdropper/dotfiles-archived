@@ -28,6 +28,11 @@ griss = {
     mu = "mu", lmbd = "lambda", sig = "sigma"
 }
 
+-- brackets
+brackets = {
+    a = {"<", ">"}, b = {"[", "]"}, c = {"{", "}"}, m = {"|", "|"}, p = {"(", ")"}
+}
+
 -- LFG tables and matrices work
 local tab = function(args, snip)
 	local rows = tonumber(snip.captures[1])
@@ -183,21 +188,21 @@ return {
     fmt([[ 
     \lecture[<>]{<>}
     <>]],
-    { t(os.date("%d-%m-%y")), i(1), i(0) },
+    { t(os.date("%d-%m-%Y")), i(1), i(0) },
     { delimiters='<>' }
     )),
     s({ trig='#ch', name='chap', dscr='fancy section header - chapter #'},
     fmt([[ 
     \bookchap[<>]{<>}{<>}
     <>]],
-    { t(os.date("%d-%m-%y")), i(1, "dscr"), i(2, "\\thesection"), i(0) },
+    { t(os.date("%d-%m-%Y")), i(1, "dscr"), i(2, "\\thesection"), i(0) },
     { delimiters='<>' }
     )),
     s({ trig='#f', name='fancy section', dscr='fancy section header - vanilla'},
     fmt([[ 
     \fancysec[<>}{<>}{<>}
     <>]],
-    { t(os.date('%d-%m-%y')), i(1, "dscr"), i(2, "title"), i(0) },
+    { t(os.date('%d-%m-%Y')), i(1, "dscr"), i(2, "title"), i(0) },
     { delimiters='<>' }
     )),
     -- links images figures
@@ -475,6 +480,12 @@ return {
     { condition=math }),
     s('xjj', {t('x_j')},
     { condition=math}),
+    s('ynn', {t('y_n')},
+    { condition=math }),
+    s('yii', {t('y_i')},
+    { condition=math }),
+    s('yjj', {t('y_j')},
+    { condition=math }),
     s({trig='sr', wordTrig=false}, {t('^2')},
     { condition=math }),
     s({trig='cb', wordTrig=false}, {t('^3')},
@@ -493,6 +504,7 @@ return {
     postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix("vr", {l("$" .. l.POSTFIX_MATCH .. "$")}),
+    postfix("mbb", {l("\\mathbb{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     -- etc
     s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
     fmt([[\<>dots]],
@@ -556,9 +568,33 @@ return {
     { condition=math }),
     s('inn', {t('\\in')},
     { condition=math }),
+    s('notin', {t('\\not\\in')},
+    { condition=math }),
+    s('ooo', {t('\\infty')},
+    { condition=math }),
     -- utils
     s('||', {t('\\mid')},
     { condition=math }),
+    s('lb', {t('\\\\')},
+    { condition=math }),
+    s('tcbl', {t('\\tcbline')},
+    { condition=math }),
     s('ctd', {t('%TODO: '), i(1)}
     ),
+    s('->', {t('\to')},
+    { condition=math }),
+    s('<->', {t('\\leftrightarrow')},
+    { condition=math }),
+    s('!>', {t('\\mapsto')},
+    { condition=math }),
+    s({ trig='floor', name='math floor', dscr='math floor'},
+    fmt([[\left\lfloor <> \right\rfloor <>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    ), { condition=math }),
+    s({ trig='ceil', name='math ceiling', dscr='math ceiling'},
+    fmt([[\left\lceil <> \right\rfloor <>]],
+    { i(1), i(0) },
+    { delimiters='<>' }
+    ), { condition=math }),
 }
