@@ -10,7 +10,7 @@ if [ "$1" == "-s" -o "$1" == "-setdir" ]; then
 else
     screenshot_dir="$HOME/Documents/university/fdir"
     figures_dir="$screenshot_dir/figures"
-    fileout="$figures_dir/$(zenity --entry --title="Take a Lecture Screenshot" --text="Figure Name:")"
+    fileout="$figures_dir/$(zenity --entry --title="Take a Lecture Screenshot" --text="Figure Name:").png"
     [ -d "$figures_dir" ] || mkdir $figures_dir
     [ -d "$figures_dir" ]; /usr/bin/gnome-screenshot -c -a -f "$fileout" $@
 fi
