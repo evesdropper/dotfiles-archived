@@ -499,12 +499,18 @@ return {
     { i(1), i(0) },
     { delimiters='<>' }
     ), { condition=math }),
+    s({ trig='sq', name='square root', dscr='square root'},
+    fmt([[\sqrt{<>}]],
+    { i(1) },
+    { delimiters='<>' }
+    ), { condition=math }),
     -- hats and bars (postfixes) 
     postfix("bar", {l("\\bar{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix("hat", {l("\\hat{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix(",.", {l("\\vec{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
     postfix("vr", {l("$" .. l.POSTFIX_MATCH .. "$")}),
     postfix("mbb", {l("\\mathbb{" .. l.POSTFIX_MATCH .. "}")}, { condition=math }),
+    postfix("vc", {l("\\mintinline{text}{" .. l.POSTFIX_MATCH .. "}")}),
     -- etc
     s({ trig='([clvd])%.', regTrig=true, name='dots', dscr='generate some dots'},
     fmt([[\<>dots]],
@@ -550,7 +556,7 @@ return {
     ), { condition=math }),
     s('cc', {t('\\subset')},
     { condition=math }),
-    s('ce', {t('\\subseteq')},
+    s('cq', {t('\\subseteq')},
     { condition=math }),
     -- reals and number sets 
     s('RR', {t('\\mathbb{R}')},
@@ -581,7 +587,7 @@ return {
     { condition=math }),
     s('ctd', {t('%TODO: '), i(1)}
     ),
-    s('->', {t('\to')},
+    s('->', {t('\\to')},
     { condition=math }),
     s('<->', {t('\\leftrightarrow')},
     { condition=math }),
