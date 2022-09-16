@@ -12,6 +12,7 @@ export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:/usr/bin/zathura
 
 # env vars
+export XDG_CONFIG_HOME="$HOME/.config"
 export IMGUR_CLIENT_ID=c794a7b22bd77a4
 
 # common places to go 
@@ -171,3 +172,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 . "$HOME/.cargo/env"
 
+alias v="fd --type f --hidden --exclude .git | fzf --reverse | xargs nvim"
+FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git | xargs nvim"
