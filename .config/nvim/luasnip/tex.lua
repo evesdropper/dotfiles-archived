@@ -52,8 +52,6 @@ local tab = function(args, snip)
             table.insert(nodes, t{"\\midrule", ""})
         end
 	end
-	-- fix last node.
-    nodes[#nodes] = t("\\\\")
     return sn(nil, nodes)
 end
 
@@ -137,6 +135,42 @@ return {
     \end{document}
     ]],
     { i(3), i(2), i(7), i(1), rep(2), rep(3), i(4), i(5), rep(5), i(6), i(0) },
+    { delimiters='<>' }
+    )),
+    s({ trig='hwtex', name='texdoc for hw', dscr='tex template for my homeworks'},
+    fmt([[ 
+    \documentclass{article}
+    \usepackage{iftex}
+    \ifluatex
+    \directlua0{
+    pdf.setinfo (
+        table.concat (
+        {
+           "/Title (<> <>)",
+           "/Author (Evelyn Koo)",
+           "/Subject (<>)",
+           "/Keywords (<>)"
+        }, " "
+        )
+    )
+    }
+    \fi
+    \usepackage{graphicx}
+    \graphicspath{{figures/}}
+    \usepackage[lecture]{random}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \rhead{\textsc{Evelyn Koo}}
+    \chead{\textsc{Homework <>}}
+    \lhead{<>}
+    \cfoot{\thepage}
+
+    \begin{document}
+    \homework[<>]{<>}{<>}
+    <>
+    \end{document}
+    ]],
+    { t("Homework"), i(1), i(2), i(3), rep(1), rep(2), t(os.date("%d-%m-%Y")), rep(2), rep(1), i(0) },
     { delimiters='<>' }
     )),
     -- semantic snippets from markdown
@@ -440,8 +474,8 @@ return {
     s({ trig='//', name='fraction', dscr='fraction (autoexpand)'},
     fmt([[\frac{<>}{<>}<>]],
     { i(1), i(2), i(0) },
-    { delimiters='<>' },
-    { condition=math })),
+    { delimiters='<>' }),
+    { condition=math }),
     s('==', {t('&='), i(1), t("\\\\")},
     { condition=math }),
     s('!=', {t('\\neq')},
@@ -493,6 +527,8 @@ return {
     s({trig='compl', wordTrig=false}, {t('^{c}')},
     { condition=math }),
     s({trig='vtr', wordTrig=false}, {t('^{T}')},
+    { condition=math }),
+    s({trig="inv", wordTrig=false}, {t('^{-1}')},
     { condition=math }),
     s({ trig='td', name='superscript', dscr='superscript', wordTrig=false},
     fmt([[^{<>}<>]],
@@ -557,6 +593,12 @@ return {
     s('cc', {t('\\subset')},
     { condition=math }),
     s('cq', {t('\\subseteq')},
+    { condition=math }),
+    s('\\\\\\', {t('\\setminus')},
+    { condition=math }),
+    s('Nn', {t('\\cap')},
+    { condition=math }),
+    s('UU', {t('\\cup')},
     { condition=math }),
     -- reals and number sets 
     s('RR', {t('\\mathbb{R}')},

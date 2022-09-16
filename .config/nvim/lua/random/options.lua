@@ -1,5 +1,6 @@
 vim.g.maplocalleader = ","
 vim.g.python3_host_prog = '/usr/bin/python3.10'
+vim.cmd[[set clipboard+=unnamedplus]]
 
 local options = {
   backup = false,                          -- creates a backup file

@@ -8,10 +8,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # path modifications
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
-export PATH=$PATH:/usr/local/bin/meson
-export PATH=$PATH:/usr/local/bin/ninja
-export PATH=$PATH:/usr/bin/zathura
+# export PATH=$PATH:/usr/local/texlive/2022/bin/x86_64-linux
+# export PATH=$PATH:/usr/bin/zathura
 
 # env vars
 export IMGUR_CLIENT_ID=c794a7b22bd77a4
@@ -39,6 +37,8 @@ alias gpl="git pull"
 
 # tlmgr
 alias tlm="sudo env PATH='$PATH' tlmgr"
+alias s="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
 
 # rc moment
 alias bashrc="nvim ~/.bashrc"

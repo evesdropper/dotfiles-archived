@@ -32,7 +32,6 @@ Videos/
 .java/
 .selected_editor
 
-
 # files
 .bash_history
 .bash_logout
@@ -42,6 +41,14 @@ Videos/
 .sudo_as_admin_successful
 .wget-hsts
 .lesshst
+.toggl_log
+.togglrc
+.miktex/
+QtProject.conf
+.cgdb/
+bin/
+.var/
+
 
 ## additional folders
 build/

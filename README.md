@@ -2,6 +2,10 @@
 Someday I need to make this look nicer.
 
 ## General Todo
-- Make mini Vim config for EECS instructional accounts.
+- Make mini Vim config for EECS instructional accounts. (Done; see `eecs-inst` branch).
 - Configure Kitty.
+    - Keyboard shortcuts for splits (in progress)
+    - Alias for kittens (ssh done)
+    - Other cool people stuff.
 - Configure Desktop.
+    - Extensions
