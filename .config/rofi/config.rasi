@@ -2,7 +2,7 @@ configuration {
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
-  font: "FiraCode Nerd Font Medium 10";
+  font: "FiraCode Nerd Font 10";
   modi: "ssh,run,drun";
   show-icons: true;
   icon-theme: "Papirus";
@@ -11,7 +11,7 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #3F3F3F;
+  bg: #323232;
   bg-alt: #64727D;
 
   fg: #ffffff;
