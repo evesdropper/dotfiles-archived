@@ -8,4 +8,8 @@ Someday I need to make this look nicer.
     - Alias for kittens (ssh done)
     - Other cool people stuff.
 - Configure Desktop.
-    - Extensions
+    - ~~Extensions~~ Sway configuration
+    - Swaylock
+    - More keyboard shortcuts
+- zsh config
+- spotify skip annoying songs script

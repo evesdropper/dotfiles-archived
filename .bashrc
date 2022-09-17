@@ -2,6 +2,23 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# for ssh to work on sway
+if [ "$(tty)" = "/dev/pts/5" ]; then
+    #export GDK_BACKEND=wayland
+    export CLUTTER_BACKEND=wayland
+    export XDG_SESSION_TYPE=wayland
+    export QT_QPA_PLATFORM=wayland-egl
+    export QT_WAYLAND_FORCE_DPI=physical
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+    export SDL_VIDEODRIVER=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export MOZ_ENABLE_WAYLAND=1
+    export MOZ_WEBRENDER=1
+    eval $(keychain --eval --dir $HOME/.config/keychain --quiet --noask --agents gpg,ssh id_rsa)
+    exec sway
+    exec ~/start-swhkd.sh
+fi
+
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
