@@ -16,3 +16,4 @@ Someday I need to make this look nicer.
 - zsh config
 - spotify skip annoying songs script
 
+test
