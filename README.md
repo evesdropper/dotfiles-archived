@@ -11,6 +11,7 @@ Someday I need to make this look nicer.
     - ~~Extensions~~ Sway configuration
     - Swaylock
     - Other sway stuff
+    - Appearance updates
     - More keyboard shortcuts
 - zsh config
 - spotify skip annoying songs script
