@@ -11,11 +11,11 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #11121D;
-  bg-alt: #444b6a;
+  bg: #3F3F3F;
+  bg-alt: #64727D;
 
-  fg: #FFFFFF;
-  fg-alt: #787c99;
+  fg: #ffffff;
+  fg-alt: #bbccdd;
 
   background-color: @bg;
   
@@ -26,7 +26,7 @@ configuration {
 }
 
 window {
-  width: 30%;
+  width: 35%;
 }
 
 element {
@@ -50,7 +50,7 @@ element-icon {
 
 entry {
   background-color: @bg-alt;
-  padding: 12;
+  padding: 12 2;
   text-color: @fg;
 }
 
