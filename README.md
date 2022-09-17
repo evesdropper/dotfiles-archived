@@ -10,6 +10,8 @@ Someday I need to make this look nicer.
 - Configure Desktop.
     - ~~Extensions~~ Sway configuration
     - Swaylock
+    - Other sway stuff
     - More keyboard shortcuts
 - zsh config
 - spotify skip annoying songs script
+
