@@ -9,11 +9,12 @@ Someday I need to make this look nicer.
     - Other cool people stuff.
 - Configure Desktop.
     - ~~Extensions~~ Sway configuration
-    - Swaylock
-    - Other sway stuff
+    - Swaylock - fix config
+    - Other sway stuff: file manager, notifs
     - Appearance updates
     - More keyboard shortcuts
 - zsh config
 - spotify skip annoying songs script
+- virtualbox
 
 test
