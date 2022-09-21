@@ -2,22 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# for ssh to work on sway
-if [ "$(tty)" = "/dev/pts/5" ]; then
-    #export GDK_BACKEND=wayland
-    export CLUTTER_BACKEND=wayland
-    export XDG_SESSION_TYPE=wayland
-    export QT_QPA_PLATFORM=wayland-egl
-    export QT_WAYLAND_FORCE_DPI=physical
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-    export SDL_VIDEODRIVER=wayland
-    export _JAVA_AWT_WM_NONREPARENTING=1
-    export MOZ_ENABLE_WAYLAND=1
-    export MOZ_WEBRENDER=1
-    eval $(keychain --eval --dir $HOME/.config/keychain --quiet --noask --agents gpg,ssh id_rsa)
-    exec sway
-    exec ~/start-swhkd.sh
-fi
 
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -31,6 +15,7 @@ export PATH=$PATH:/usr/local/go/bin
 # env vars
 export XDG_CONFIG_HOME="$HOME/.config"
 export IMGUR_CLIENT_ID=c794a7b22bd77a4
+export MOZ_ENABLE_WAYLAND=1
 
 # common places to go 
 alias home='cd ~'
@@ -191,3 +176,25 @@ export NVM_DIR="$HOME/.nvm"
 
 alias v="fd --type f --hidden --exclude .git | fzf --reverse | xargs nvim"
 FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git | xargs nvim"
+
+alias swaylock-default="swaylock \
+	--screenshots \
+	--clock \
+    --font 'Fira Code Nerd Font:style=Regular 40' \
+	--indicator \
+	--indicator-radius 100 \
+	--indicator-thickness 7 \
+	--effect-blur 7x5 \
+	--effect-vignette 0.5:0.5 \
+	--ring-color bbccdd \
+    --ring-wrong-color f53c3c \
+    --ring-ver-color 2596be \
+	--key-hl-color 2980b9 \
+	--line-color 00000000 \
+	--inside-color 323232 \
+	--separator-color 00000000 \
+	--grace 2 \
+	--fade-in 0.2"
+
+# for ssh to work on sway
+[ "$(tty)" = "/dev/tty3" ] && exec sway &>/tmp/sway_terminal.log

@@ -201,3 +201,15 @@ include $HOME/.config/sway/config.d/*
 
 exec_always $HOME/start-swhkd.sh
 exec_always wl-clipboard-manager -t
+
+# Generated windows.
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [app_id="zenity"] floating enable
+for_window [app_id="zenity"] resize set 225 75
