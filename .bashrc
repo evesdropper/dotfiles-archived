@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -15,7 +14,7 @@ export PATH=$PATH:/usr/local/go/bin
 # env vars
 export XDG_CONFIG_HOME="$HOME/.config"
 export IMGUR_CLIENT_ID=c794a7b22bd77a4
-export MOZ_ENABLE_WAYLAND=1
+export MOZ_ENABLE_WAYLAND=1 
 
 # common places to go 
 alias home='cd ~'
@@ -198,3 +197,5 @@ alias swaylock-default="swaylock \
 
 # for ssh to work on sway
 [ "$(tty)" = "/dev/tty3" ] && exec sway &>/tmp/sway_terminal.log
+
+
