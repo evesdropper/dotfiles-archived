@@ -201,6 +201,7 @@ include $HOME/.config/sway/config.d/*
 
 exec_always $HOME/start-swhkd.sh
 exec_always wl-clipboard-manager -t
+eval "$(ssh-agent -s)"
 
 # Generated windows.
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
